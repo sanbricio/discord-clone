@@ -31,6 +31,27 @@ Este comando iniciará el servidor de desarrollo, y podrás acceder a la aplicac
 
 ## Base de datos
 
+### Pasos para Generar la Base de Datos con Prisma
+
+1. **Generar los Imports Necesarios:**
+   Ejecuta el siguiente comando para generar los archivos de importación necesarios para tu proyecto:
+
+    ```bash
+    npx prisma generate 
+    ```
+
+   Este comando asegurará que todas las dependencias y configuraciones de Prisma estén actualizadas.
+
+2. **Generar la Base de Datos:**
+   Una vez que se hayan generado los imports, ejecuta el siguiente comando para crear o actualizar la base de datos según las especificaciones del modelo:
+
+    ```bash
+    npx prisma db push  
+    ```
+
+   Este comando se encargará de sincronizar tu modelo de datos con la base de datos, aplicando cualquier cambio necesario.
+
+Recuerda ejecutar estos comandos cada vez que realices cambios en tu modelo de datos.
 Para explorar la base de datos de una manera mas amigable , puedes utilizar Prisma Studio ejecutando el siguiente comando:
 
 ```bash
