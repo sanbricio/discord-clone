@@ -1,11 +1,11 @@
-import { currentProfile } from "@/lib/current-profile"
-import { db } from "@/lib/db";
 import { redirect } from "next/navigation";
-
 import { NavigationAction } from "./navigation-action";
+import { NavigationItem } from "./navigation-item";
+
+import { db } from "@/lib/db";
+import { currentProfile } from "@/lib/current-profile"
 import { Separator } from "@/components/ui/separator";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { NavigationItem } from "./navigation-item";
 import { ModeToggle } from "@/components/mode-toggle";
 import { UserButton } from "@clerk/nextjs";
 
