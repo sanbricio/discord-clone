@@ -36,3 +36,5 @@ next-env.d.ts
 
 # node config
 package-lock.json
+
+postgres_data

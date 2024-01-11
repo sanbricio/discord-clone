@@ -26,7 +26,7 @@ Este comando iniciará el servidor de desarrollo, y podrás acceder a la aplicac
 - Socket.io: Biblioteca para la comunicación en tiempo real entre clientes y servidor.
 - Prisma: ORM (Object-Relational Mapping) para la comunicación con bases de datos.
 - TailwindCSS: Framework de diseño de CSS utilizable con facilidad.
-- MySQL: Sistema de gestión de bases de datos relacional.
+- PostgreSQL: Sistema de gestión de bases de datos relacional.
 - PlanetScale: Herramienta integrada para mejorar la gestión de la base de datos distribuida (version gratuita).
 
 ## Base de datos
@@ -60,4 +60,23 @@ npx prisma studio
 
 Este comando abrirá Prisma Studio, una interfaz gráfica que te permite visualizar y administrar los datos de tu base de datos de una manera más intuitiva. Al ejecutar este comando, se iniciará un servidor local y se abrirá tu navegador predeterminado en la dirección <http://localhost:5555>.
 
-<!-- TODO: Agregar variables de ambiente que son necesarias para desplegar la aplicación (cuidado con las variables que son privadas como por ejemplo CLERK_SECRET_KEY,y la conex a bbdd) -->
+## Fichero .env
+
+```bash
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
+NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
+
+POSTGRES_HOST=
+POSTGRES_PORT=
+POSTGRES_USER=
+POSTGRES_PASSWORD=
+POSTGRES_DB=
+
+DATABASE_URL=
+UPLOADTHING_SECRET=
+UPLOADTHING_APP_ID=
+```
