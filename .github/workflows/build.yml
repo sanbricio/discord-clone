@@ -12,11 +12,11 @@ jobs:
     steps:
       # Clonamos el repositorio
       - name: Checkout Repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
       # Configuramos Node.js
       - name: Setup Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v4
         with:
           node-version: 20.5.0
 
@@ -27,3 +27,20 @@ jobs:
       # Build del proyecto
       - name: Build Project
         run: npm run build
+  sonarcloud:
+    name: SonarCloud
+    runs-on: ubuntu-20.04
+    needs: build 
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  
+      - name: SonarCloud Scan
+        uses: SonarSource/sonarcloud-github-action@master
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          
+      - name: Debug Secrets
+        run: |
+          echo "SONAR_TOKEN: $SONAR_TOKEN"
+          env
