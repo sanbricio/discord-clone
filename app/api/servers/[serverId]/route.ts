@@ -30,7 +30,7 @@ export async function PATCH(req: Request, { params }: { params: { serverId: stri
     }
 }
 
-export async function DELETE({ params }: { params: { serverId: string } }) {
+export async function DELETE(req: Request, { params }: { params: { serverId: string } }) {
     try {
         const profile = await currentProfile();
         if (!profile) {
