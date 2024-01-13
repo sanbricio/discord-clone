@@ -18,7 +18,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 20.5.0
 
       # Instalamos dependencias del proyecto Discord-Clone
       - name: Install Dependencies of Discord-Clone
@@ -27,13 +27,3 @@ jobs:
       # Build del proyecto
       - name: Build Project
         run: npm run build
-        
-      - name: Check pipeline status
-        run: |
-          if [ "${{ job.status }}" == "cancelled" ]; then
-            echo "Pipeline fue cancelada, revertir el commit"
-            
-            # Revertir el último commit en la rama main
-            git revert --no-edit HEAD
-            git push origin main
-          fi
