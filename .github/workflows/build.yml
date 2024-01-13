@@ -34,13 +34,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0  
+          fetch-depth: 0 
+      - name: Debug Secrets
+        run: |
+          echo "SONAR_TOKEN: $SONAR_TOKEN"
+          env
       - name: SonarCloud Scan
         uses: SonarSource/sonarcloud-github-action@master
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           
-      - name: Debug Secrets
-        run: |
-          echo "SONAR_TOKEN: $SONAR_TOKEN"
-          env
+      
