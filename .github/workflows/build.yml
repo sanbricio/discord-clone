@@ -27,3 +27,13 @@ jobs:
       # Build del proyecto
       - name: Build Project
         run: npm run build
+        
+      - name: Check pipeline status
+        run: |
+          if [ "${{ job.status }}" == "cancelled" ]; then
+            echo "Pipeline fue cancelada, revertir el commit"
+            
+            # Revertir el último commit en la rama main
+            git revert --no-edit HEAD
+            git push origin main
+          fi
