@@ -1,6 +1,6 @@
 # Discord clone
 
-Este proyecto es un clon de Discord creado utilizando varias tecnologías modernas para el desarrollo web, incluyendo Next.js, React, Socket.io, Prisma, TailwindCSS, MySQL y Clerk para la autenticación del usuario. También se integra con PlanetScale para mejorar la gestión de la base de datos.
+Este proyecto es un clon de Discord creado utilizando varias tecnologías modernas para el desarrollo web, incluyendo Next.js, React, Socket.io, Prisma, TailwindCSS, PostgreSQL y Clerk para la autenticación del usuario.
 
 ## Despliegue
 
@@ -27,7 +27,6 @@ Este comando iniciará el servidor de desarrollo, y podrás acceder a la aplicac
 - Prisma: ORM (Object-Relational Mapping) para la comunicación con bases de datos.
 - TailwindCSS: Framework de diseño de CSS utilizable con facilidad.
 - PostgreSQL: Sistema de gestión de bases de datos relacional.
-- PlanetScale: Herramienta integrada para mejorar la gestión de la base de datos distribuida (version gratuita).
 
 ## Base de datos
 
