@@ -14,6 +14,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button"
 import { useModal } from "@/hooks/use-modal-store";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { useEffect } from "react";
 
 
 const formSchema = z.object({
@@ -29,27 +30,36 @@ const formSchema = z.object({
 })
 
 export const CreateChannelModal = () => {
-    const { isOpen, onClose, type } = useModal()
+    const { isOpen, onClose, type, data } = useModal()
     const router = useRouter();
     const params = useParams();
 
     const isModalOpen = isOpen && type === "createChannel";
+    const { channelType } = data;
 
     const form = useForm({
         resolver: zodResolver(formSchema),
         defaultValues: {
             name: "",
-            type: ChannelType.TEXT,
+            type: channelType || ChannelType.TEXT,
         }
     })
+
+    useEffect(() => {
+        if (channelType) {
+            form.setValue("type", channelType)
+        } else {
+            form.setValue("type", ChannelType.TEXT)
+        }
+    }, [channelType, form])
 
     const isLoading = form.formState.isSubmitting;
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
             const url = qs.stringifyUrl({
-                url:"/api/channels",
-                query:{
+                url: "/api/channels",
+                query: {
                     serverId: params?.serverId
                 }
             });
@@ -102,7 +112,7 @@ export const CreateChannelModal = () => {
                             <FormField
                                 control={form.control}
                                 name="type"
-                                render={({field}) =>(
+                                render={({ field }) => (
                                     <FormItem>
                                         <FormLabel>Channel Type</FormLabel>
                                         <Select
@@ -116,11 +126,11 @@ export const CreateChannelModal = () => {
                                                      text-black ring-offset-0 focus:ring-offset-0 
                                                      capitalize outline-none"
                                                 >
-                                                    <SelectValue placeholder="Select a channel type"/>
+                                                    <SelectValue placeholder="Select a channel type" />
                                                 </SelectTrigger>
                                             </FormControl>
                                             <SelectContent>
-                                                {Object.values(ChannelType).map((type)=> (
+                                                {Object.values(ChannelType).map((type) => (
                                                     <SelectItem
                                                         key={type}
                                                         value={type}
@@ -131,7 +141,7 @@ export const CreateChannelModal = () => {
                                                 ))}
                                             </SelectContent>
                                         </Select>
-                                        <FormMessage/>
+                                        <FormMessage />
                                     </FormItem>
                                 )}
                             />
