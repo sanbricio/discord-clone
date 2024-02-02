@@ -24,8 +24,6 @@ export const SocketProvider = ({
 }) => {
     const [socket, setSocket] = useState(null)
     const [isConnected, setIsConnected] = useState(false)
-    // Cuando tengamos que desplegar la aplicación tendremos que poner nuestra url de despliegue para que nos funcione
-    // Esto por predeterminado utiliza localhost
     useEffect(() => {
         const socketInstance = new (ClientIO as any)(process.env.NEXT_PUBLIC_SITE_URL!, {
             path: "/api/socket/io",

@@ -11,7 +11,6 @@ export const getOrCreateConversation = async (memberOneId: string, memberTwoId: 
 };
 
 const findConversation = async (memberOneId: string, memberTwoId: string) => {
-    //TODO Comprobar cambio de esta query
     try {
         return await db.conversation.findFirst({
             where: {
