@@ -6,4 +6,8 @@ COPY . .
 
 RUN npm install
 
-CMD ["npm","run","deploy"]
+RUN npx prisma generate
+
+RUN npm run build
+
+CMD ["sh", "-c", "npx prisma db push && npm run start"]
