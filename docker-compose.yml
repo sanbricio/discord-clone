@@ -13,7 +13,7 @@ services:
     volumes:
       - /home/santiago/postgres:/var/lib/postgresql/data
   discord:
-    build: .
+    image: sanbricio/discord:1.0.0
     ports:
       - "3000:3000"
     container_name: my-discord-container
