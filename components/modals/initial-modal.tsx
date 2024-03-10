@@ -28,7 +28,7 @@ export const InitialModal = () => {
 
     useEffect(() =>{
         setIsMounted(true)
-    })
+    },[])
 
     const form = useForm({
         resolver: zodResolver(formSchema),
